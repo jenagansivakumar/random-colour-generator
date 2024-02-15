@@ -15,6 +15,8 @@ export default function RandomColour() {
       hexColour += hex[randomColourUtility(hex.length)];
     }
     console.log(hexColour);
+
+    setColour(hexColour);
   }
   function handleCreateRgbRandomColour() {}
 
