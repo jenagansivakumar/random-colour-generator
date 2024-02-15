@@ -18,7 +18,13 @@ export default function RandomColour() {
 
     setColour(hexColour);
   }
-  function handleCreateRgbRandomColour() {}
+  function handleCreateRgbRandomColour() {
+    const r = randomColourUtility(256);
+    const g = randomColourUtility(256);
+    const b = randomColourUtility(256);
+
+    setColour(r, g, b);
+  }
 
   const containerStyle = {
     background: colour,
