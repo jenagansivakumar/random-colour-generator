@@ -69,7 +69,9 @@ export default function RandomColour() {
         >
           Generate Random Colour
         </button>
-        <button onClick={copyToClipboard}>Copy to clipboard</button>
+        <button className="copy-button" onClick={copyToClipboard}>
+          Copy to clipboard
+        </button>
       </div>
     </div>
   );
