@@ -1,20 +1,20 @@
 import { useState } from "react";
-import "./index.css"; // Import the CSS file
 
 export default function RandomColour() {
   const [typeOfColour, setTypeOfColour] = useState("hex");
   const [colour, setColour] = useState("#000000");
 
-  function randomColourUtility(length){
-    return Math.floor(Math.random()*length)
+  function randomColourUtility(length) {
+    return Math.floor(Math.random() * length);
   }
   function handleCreateHexRandomColour() {
     const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
-    let colour = "#"
+    let hexColour = "#";
 
-    for(let i =0; i<6; i++){
-      hexColour +=
+    for (let i = 0; i < 6; i++) {
+      hexColour += hex[randomColourUtility(hex.length)];
     }
+    console.log(hexColour);
   }
   function handleCreateRgbRandomColour() {}
 

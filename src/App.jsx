@@ -1,4 +1,4 @@
-import RandomColour from "./components/RandomColour";
+import RandomColour from "./components/RandomColour/RandomColour";
 import "./App.css";
 
 function App() {
