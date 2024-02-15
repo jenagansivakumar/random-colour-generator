@@ -23,7 +23,7 @@ export default function RandomColour() {
     const g = randomColourUtility(256);
     const b = randomColourUtility(256);
 
-    setColour(r, g, b);
+    setColour(`rgb${r},${g},${b}`);
   }
 
   const containerStyle = {
@@ -44,6 +44,10 @@ export default function RandomColour() {
         {" "}
         Generate Random Colour
       </button>
+      <div className="display-rgb">
+        <h3>{typeOfColour === "rgb" ? "RGB Colour" : "HEX Colour"}</h3>
+        <h1>{colour}</h1>
+      </div>
     </div>
   );
 }
