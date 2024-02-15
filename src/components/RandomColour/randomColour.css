@@ -6,6 +6,12 @@
   align-items: center;
   flex-direction: column;
   padding: 20px;
+  position: relative;
+}
+
+.button-container {
+  position: absolute;
+  bottom: 20px;
 }
 
 button {

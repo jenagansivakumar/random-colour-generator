@@ -8,6 +8,7 @@ export default function RandomColour() {
   function randomColourUtility(length) {
     return Math.floor(Math.random() * length);
   }
+
   function handleCreateHexRandomColour() {
     const hex = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
     let hexColour = "#";
@@ -15,16 +16,20 @@ export default function RandomColour() {
     for (let i = 0; i < 6; i++) {
       hexColour += hex[randomColourUtility(hex.length)];
     }
-    console.log(hexColour);
 
     setColour(hexColour);
   }
+
   function handleCreateRgbRandomColour() {
     const r = randomColourUtility(256);
     const g = randomColourUtility(256);
     const b = randomColourUtility(256);
 
-    setColour(`rgb${r},${g},${b}`);
+    setColour(`rgb(${r},${g},${b})`);
+  }
+
+  function copyToClipboard() {
+    navigator.clipboard.writeText(colour);
   }
 
   useEffect(() => {
@@ -33,7 +38,7 @@ export default function RandomColour() {
     } else {
       handleCreateHexRandomColour();
     }
-  }, typeOfColour);
+  }, [typeOfColour]);
 
   const containerStyle = {
     background: colour,
@@ -41,21 +46,30 @@ export default function RandomColour() {
 
   return (
     <div className="container" style={containerStyle}>
-      <button onClick={() => setTypeOfColour("hex")}> Create HEX </button>
-      <button onClick={() => setTypeOfColour("rgb")}> Create RGB </button>
-      <button
-        onClick={
-          typeOfColour === "hex"
-            ? handleCreateHexRandomColour
-            : handleCreateRgbRandomColour
-        }
-      >
-        {" "}
-        Generate Random Colour
-      </button>
       <div className="display-rgb">
         <h3>{typeOfColour === "rgb" ? "RGB Colour" : "HEX Colour"}</h3>
         <h1>{colour}</h1>
+      </div>
+      <div className="button-container">
+        {" "}
+        {/* Added wrapper div for buttons */}
+        <button className="button" onClick={() => setTypeOfColour("hex")}>
+          Create HEX
+        </button>
+        <button className="button" onClick={() => setTypeOfColour("rgb")}>
+          Create RGB
+        </button>
+        <button
+          className="button"
+          onClick={
+            typeOfColour === "hex"
+              ? handleCreateHexRandomColour
+              : handleCreateRgbRandomColour
+          }
+        >
+          Generate Random Colour
+        </button>
+        <button onClick={copyToClipboard}>Copy to clipboard</button>
       </div>
     </div>
   );
