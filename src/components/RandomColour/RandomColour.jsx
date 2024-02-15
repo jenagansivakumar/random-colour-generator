@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import "./randomColour.css";
 
 export default function RandomColour() {
   const [typeOfColour, setTypeOfColour] = useState("hex");
@@ -25,6 +26,14 @@ export default function RandomColour() {
 
     setColour(`rgb${r},${g},${b}`);
   }
+
+  useEffect(() => {
+    if (typeOfColour === "rgb") {
+      handleCreateRgbRandomColour();
+    } else {
+      handleCreateHexRandomColour();
+    }
+  }, typeOfColour);
 
   const containerStyle = {
     background: colour,
